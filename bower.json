@@ -1,0 +1,24 @@
+{
+  "name": "generative-purescript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^4.1.0",
+    "purescript-console": "^4.1.0",
+    "purescript-effect": "^2.0.0",
+    "purescript-drawing": "^4.0.0",
+    "purescript-canvas": "^4.0.0",
+    "purescript-lists": "^5.0.0",
+    "purescript-math": "^2.1.1",
+    "purescript-integers": "^4.0.0",
+    "purescript-random": "^4.0.0",
+    "purescript-colors": "^5.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^4.0.0"
+  }
+}
