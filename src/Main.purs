@@ -1,19 +1,19 @@
 module Main where
 
+import Color
+import Data.Array
+import Data.Maybe
+import Data.Traversable
+import Effect.Random
+import Graphics.Drawing
 import Prelude
 
-import Color
 import Color.Scale (sample)
 import Color.Scale.Perceptual (magma)
-import Data.Array
 import Data.Foldable (fold)
-import Data.Traversable
 import Data.Int (toNumber)
-import Data.Maybe
 import Effect (Effect)
-import Effect.Random
-import Graphics.Canvas (getCanvasElementById, getContext2D)
-import Graphics.Drawing
+import Graphics.Canvas (clearRect, getCanvasElementById, getCanvasHeight, getCanvasWidth, getContext2D)
 import Math (sin, cos, pi)
 import Partial.Unsafe (unsafePartial)
 
@@ -26,10 +26,16 @@ main = do
 
     deform <- sequence $ replicate length $ randomRange 2.0 5.0
 
+    width <- getCanvasWidth canvas
+    height <- getCanvasHeight canvas
+
+    clearRect ctx { x: 0.0, y: 0.0, width, height }
+
     render ctx $
       translate 100.0 100.0 $ fold $ do
         r <- 0..10
-        pure $ translate 0.0 (toNumber r * 20.0) $
+        -- pure $ translate 0.0 (toNumber r * 20.0) $
+        pure $ rotate (toNumber r * 0.01) $
           fold (lines deform)
   where
     length = 300
